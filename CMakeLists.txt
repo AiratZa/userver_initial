@@ -44,8 +44,13 @@ if(DEFINED ENV{PREFIX})
 	set(CMAKE_INSTALL_PREFIX ${PREFIX_PATH})
 endif()
 
-set(CONFIG_VAR_PATH ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_SYSCONFDIR}/${PROJECT_NAME}/config_vars.yaml)
-set(CONFIG_FALLBACK_PATH ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_SYSCONFDIR}/${PROJECT_NAME}/dynamic_config_fallback.json)
+set(CONFIGS_DIR ${PROJECT_SOURCE_DIR}/configs)
+
+set(CONFIG_VAR_PATH ${CONFIGS_DIR}/config_vars.yaml)
+set(CONFIG_FALLBACK_PATH ${CONFIGS_DIR}/dynamic_config_fallback.json)
+
+message(STATUS "CONFIG_VAR_PATH: ${CONFIG_VAR_PATH}")
+message(STATUS "CONFIG_FALLBACK_PATH: ${CONFIG_FALLBACK_PATH}")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/configs/static_config.yaml.in ${CMAKE_CURRENT_SOURCE_DIR}/configs/static_config.yaml)
 
